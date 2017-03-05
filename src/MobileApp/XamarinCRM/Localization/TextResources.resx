@@ -18,7 +18,7 @@
     	<value>My Porfolio</value>
 	</data>
 	<data name="MainTabs_Customers" xml:space="preserve">
-    	<value>Customers</value>
+    	<value>My Interest</value>
 	</data>
 	<data name="MainTabs_Products" xml:space="preserve">
     	<value>ETFs</value>
@@ -35,13 +35,13 @@
     	<value>Password:</value>
 	</data>
 	<data name="Splash_SignIn" xml:space="preserve">
-    	<value>SIGN IN</value>
+    	<value>CREATE ACCOUNT</value>
 	</data>
 	<data name="Splash_SkipSignIn" xml:space="preserve">
-    	<value>SKIP SIGN IN (demo)</value>
+    	<value>SIGN IN</value>
 	</data>
 	<data name="Splash_Title" xml:space="preserve">
-    	<value>Hike - Smart Invest</value>
+    	<value>Hyke</value>
 	</data>
 
 
@@ -198,12 +198,12 @@
 		<value>Week</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_YAxis_Title" xml:space="preserve">
-		<value>Sales Total</value>
+		<value></value>
 	</data>
 
 
 	<data name="Customers_Detail_Tab_Title" xml:space="preserve">
-		<value>Customer</value>
+		<value>Interest</value>
 	</data>
 	<data name="Customers_Orders_Tab_Title" xml:space="preserve">
 		<value>Orders</value>
@@ -290,7 +290,7 @@
 		<value>Loading product image...</value>
 	</data>
 	<data name="Customers_Orders_CustomerTabbedPage_BackToCustomers" xml:space="preserve">
-		<value>Back to Customers</value>
+		<value>Back to Interests</value>
 	</data>
 	<data name="Customers_Detail_MappingDirections_LeaveApplication" xml:space="preserve">
 		<value>Would you like to leave the Xamarin CRM app and get directions?</value>

@@ -47,6 +47,43 @@ namespace XamarinCRM
             #region the sales graph
             double chartHeight = Device.OnPlatform(190, 250, 190);
 
+			var lineSeries = new LineSeries() { 
+                YAxis = new NumericalAxis()
+				{
+					Title = new ChartAxisTitle()
+					{
+						Text = TextResources.SalesDashboard_SalesChart_YAxis_Title,
+						Font = ChartAxisFont,
+						TextColor = Palette._011
+					},
+					OpposedPosition = false,
+					ShowMajorGridLines = true,
+					MajorGridLineStyle = new ChartLineStyle() { StrokeColor = AxisLineColor },
+					ShowMinorGridLines = true,
+					MinorTicksPerInterval = 1,
+					MinorGridLineStyle = new ChartLineStyle() { StrokeColor = AxisLineColor },
+					LabelStyle = new ChartAxisLabelStyle()
+					{
+						TextColor = AxisLabelColor,
+						LabelFormat = "$0"
+					}
+				},
+				DataMarker = new ChartDataMarker()
+				{
+					LabelStyle = new DataMarkerLabelStyle()
+					{
+						LabelPosition = DataMarkerLabelPosition.Auto,
+						TextColor = Color.Black,
+						BackgroundColor = Color.Transparent, //Palette._003,
+						LabelFormat = "$0.00"
+					}
+				},
+
+				EnableDataPointSelection = false,
+				Color = Palette._003
+			};
+
+			/*
             var columnSeries = new ColumnSeries()
             {
                 YAxis = new NumericalAxis()
@@ -84,7 +121,9 @@ namespace XamarinCRM
                 Color = Palette._003
             };
 
-            columnSeries.SetBinding(ChartSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
+            columnSeries.SetBinding(ChartSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");*/
+
+			lineSeries.SetBinding(LineSeries.ItemsSourceProperty, "WeeklySalesChartDataPoints");
 
             var chart = new SfChart()
             {
@@ -110,7 +149,7 @@ namespace XamarinCRM
             if (Device.OS == TargetPlatform.Android)
                 chart.BackgroundColor = Color.Transparent;
 
-            chart.Series.Add(columnSeries);
+            chart.Series.Add(lineSeries);
             chart.SetBinding(IsEnabledProperty, "IsBusy", converter: new InverseBooleanConverter());
             chart.SetBinding(IsVisibleProperty, "IsBusy", converter: new InverseBooleanConverter());
            
@@ -132,13 +171,8 @@ namespace XamarinCRM
             Device.OnPlatform(
                 iOS: () =>
                 { 
-                    columnSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * 0.6);
-                }, 
-                Android: () =>
-                { 
-                    columnSeries.YAxis.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
-                    columnSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.2);
-                    chart.PrimaryAxis.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Large, typeof(Label)) * 1.5);
+                    //columnSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * 0.6);
+				lineSeries.DataMarker.LabelStyle.Font = Font.SystemFontOfSize(Device.GetNamedSize(NamedSize.Micro, typeof(Label)) * 0.6);
                 });
             #endregion
 
