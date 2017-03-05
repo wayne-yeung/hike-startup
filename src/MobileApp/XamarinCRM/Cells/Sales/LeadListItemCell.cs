@@ -31,7 +31,7 @@ namespace XamarinCRM.Cells.Sales
                 Label.TextProperty,
                 new Binding("Company"));
             #endregion
-
+			/*
             #region opportunityStageLabel
             OpportunityStageLabel = new Label()
             {
@@ -45,7 +45,7 @@ namespace XamarinCRM.Cells.Sales
                 Label.TextProperty,
                 new Binding(
                     path: "OpportunityStage"));
-            #endregion
+            #endregion*/
 
             #region leadAmountLabel
             LeadAmountLabel = new Label()
@@ -96,12 +96,12 @@ namespace XamarinCRM.Cells.Sales
                 heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 3));
 
             // add the percentCopleteLabel to the relativeLayout
-            relativeLayout.Children.Add(
+            /*relativeLayout.Children.Add(
                 view: OpportunityStageLabel,
                 xConstraint: Constraint.RelativeToParent(parent => 0),
                 yConstraint: Constraint.RelativeToParent(parent => parent.Height / 3),
                 widthConstraint: Constraint.RelativeToParent(parent => parent.Width / 2),
-                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 3));
+                heightConstraint: Constraint.RelativeToParent(parent => parent.Height / 3));*/
 
             // add the leadAmountLabel to the relativeLayout
             relativeLayout.Children.Add(
