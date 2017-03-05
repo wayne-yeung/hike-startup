@@ -8,6 +8,7 @@ using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Base;
 using XamarinCRM.Models;
 using XamarinCRM.Services;
+using System;
 
 namespace XamarinCRM
 {
@@ -83,7 +84,27 @@ namespace XamarinCRM
                 await _DataClient.SeedLocalDataAsync();
             }
 
+            var rnd = new Random();
             Leads = (await _DataClient.GetAccountsAsync(true)).ToObservableCollection();
+            string[] names = 
+            {
+                "iShares Core S&P 500 UCITS ETF",
+                "iShares NASDAQ 100 UCITS ETF",
+                "iShares US Equity Buyback Achievers UCITS ETF",
+                "iShares STOXX Europe 600 Banks UCITS ETF (DE)",
+                "iShares Select Dividend ETF",
+                "iShares Core High Dividend ETF",
+                "iShares Core S&P U.S. Value ETF",
+                "iShares MSCI Turkey ETF",
+                "iShares MSCI Netherlands ETF",
+                "iShares MSCI Ireland Capped ETF",
+                "iShares Asia/Pacific Dividend ETF"
+            };
+
+            foreach (var lead in Leads)
+            {
+                lead.Company = names[rnd.Next(0, 9)];
+            }
 
             IsInitialized = true;
             IsBusy = false;
