@@ -27,34 +27,34 @@ namespace XamarinCRM.Services
 
         // This Lazy-wrapped MobileServiceClient allows for the DependencyService to grab the service URL when it's needed at runtime.
         // Because the _AzureAppServiceClient is static, the Dependency service would otherwise not be able to provide a value at the proper time.
-        static Lazy<MobileServiceClient> _LazyMobileServiceClient = 
+        static Lazy<MobileServiceClient> _LazyMobileServiceClient =
             new Lazy<MobileServiceClient>(() =>
                 {
                     string serviceUrl = DependencyService.Get<IConfigFetcher>().GetAsync("dataServiceUrl").Result;
 
-                    #if DEBUG
+#if DEBUG
 
                     // using a special handler on iOS so that we can use the Charles debugging proxy to inspect HTTP traffic
 
-                    var handlerFactory = DependencyService.Get<IHttpClientHandlerFactory> ();
+                    var handlerFactory = DependencyService.Get<IHttpClientHandlerFactory>();
 
-                    if (handlerFactory != null) 
+                    if (handlerFactory != null)
                     {
-                        return new MobileServiceClient(serviceUrl, handlerFactory.GetHttpClientHandler ());
+                        return new MobileServiceClient(serviceUrl, handlerFactory.GetHttpClientHandler());
                     }
 
                     return new MobileServiceClient(serviceUrl);
 
-                    #else
+#else
 
                     return new MobileServiceClient(serviceUrl);
 
-                    #endif
+#endif
                 });
 
         public static MobileServiceClient _AzureAppServiceClient
         {
-            get 
+            get
             {
                 return _LazyMobileServiceClient.Value;
             }
@@ -105,7 +105,7 @@ namespace XamarinCRM.Services
         public bool IsSeeded { get { return _IsSeeded; } }
 
         public async Task SeedLocalDataAsync()
-        {      
+        {
             await Execute(
                 async () =>
                 {
@@ -133,7 +133,7 @@ namespace XamarinCRM.Services
                 async () =>
                 {
                     if (!LocalDBExists)
-                    {    
+                    {
                         await Init();
                     }
 
@@ -207,7 +207,7 @@ namespace XamarinCRM.Services
                 async () =>
                 {
                     if (!LocalDBExists)
-                    {    
+                    {
                         await Init();
                     }
 
@@ -232,7 +232,7 @@ namespace XamarinCRM.Services
         public async Task DeleteAccountAsync(Account item)
         {
             await Execute(
-                async () => 
+                async () =>
                     await _AccountTable.DeleteAsync(item)
             );
         }
@@ -241,11 +241,28 @@ namespace XamarinCRM.Services
         {
             return await Execute<IEnumerable<Account>>(
                 async () =>
-                    await _AccountTable
-                    .Where(account => account.IsLead == includeLeads).OrderBy(b => b.Company)
-                        .ToEnumerableAsync(),
+                    new List<Account>()
+                    {
+                        new Account()
+                        {
+                            Company = "iShares Global Clean Energy UCITS ETF",
+                            OpportunitySize = 3000
+                        },
+                        new Account()
+                        {
+                            Company = "iShares STOXX Europe 600 Banks UCITS ETF (DE)",
+                            OpportunitySize = 3500
+                        },
+                        new Account()
+                        {
+                            Company = "iShares Dow Jones Global Sustainability Screened UCITS ETF",
+                            OpportunitySize = 1600
+                        }
+                   
+                  },
                 new List<Account>()
             );
+
         }
 
         #endregion
@@ -259,7 +276,7 @@ namespace XamarinCRM.Services
                 async () =>
                 {
                     if (!LocalDBExists)
-                    {    
+                    {
                         await Init();
                     }
 
@@ -275,7 +292,7 @@ namespace XamarinCRM.Services
                 {
                     if (String.IsNullOrWhiteSpace(parentCategoryId))
                     {
-                        var rootCategories = 
+                        var rootCategories =
                             await _CategoryTable
                                 .Where(category => category.ParentCategoryId == null)
                                 .ToEnumerableAsync();
@@ -286,7 +303,7 @@ namespace XamarinCRM.Services
                         {
                             throw new Exception("The catalog category hierarchy contains no root. This should never happen.");
                         }
-                        return 
+                        return
                             await _CategoryTable
                                 .Where(category => category.ParentCategoryId.ToLower() == rootCategory.Id.ToLower())
                                 .OrderBy(category => category.Sequence)
@@ -294,7 +311,7 @@ namespace XamarinCRM.Services
                     }
                     else
                     {
-                        return 
+                        return
                             await _CategoryTable
                                 .Where(category => category.ParentCategoryId.ToLower() == parentCategoryId.ToLower())
                                 .OrderBy(category => category.Sequence)
@@ -330,7 +347,7 @@ namespace XamarinCRM.Services
                 async () =>
                 {
                     if (!LocalDBExists)
-                    {    
+                    {
                         await Init();
                     }
 
@@ -346,7 +363,7 @@ namespace XamarinCRM.Services
                     await _ProductTable
                         .Where(product => product.CategoryId.ToLower() == categoryId.ToLower())
                         .OrderBy(product => product.Name)
-                        .ToEnumerableAsync(), 
+                        .ToEnumerableAsync(),
                 new List<Product>());
         }
 
@@ -358,7 +375,7 @@ namespace XamarinCRM.Services
                     if (String.IsNullOrWhiteSpace(topLevelCategoryId))
                         throw new ArgumentException("topLevelCategoryId must not be null or empty", "topLevelCategoryId");
 
-                    var rootCategories = 
+                    var rootCategories =
                         await _CategoryTable
                             .Where(category => category.ParentCategoryId == null)
                             .ToEnumerableAsync();
@@ -370,7 +387,7 @@ namespace XamarinCRM.Services
                         throw new Exception("The catalog category hierarchy contains no root. This should never happen.");
                     }
 
-                    var categories = 
+                    var categories =
                         await _CategoryTable
                             .Where(category => category.Id.ToLower() == topLevelCategoryId.ToLower())
                             .ToEnumerableAsync();
@@ -407,7 +424,7 @@ namespace XamarinCRM.Services
             return await Execute<Product>(
                 async () =>
                 {
-                    var products = 
+                    var products =
                         await _ProductTable
                             .Where(p => p.Name.ToLower() == productName.ToLower())
                             .OrderBy(product => product.Name)
@@ -424,7 +441,7 @@ namespace XamarinCRM.Services
             return await Execute<IEnumerable<Product>>(
                 async () =>
                 {
-                    var products = 
+                    var products =
                         await _ProductTable
                             .Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()) || x.Description.ToLower().Contains(searchTerm.ToLower()))
                             .ToEnumerableAsync();
@@ -479,7 +496,7 @@ namespace XamarinCRM.Services
         {
             var resultCategories = new List<Category>();
 
-            var categories = 
+            var categories =
                 await _CategoryTable
                     .Where(c => c.Id == id)
                     .ToEnumerableAsync();
@@ -488,7 +505,7 @@ namespace XamarinCRM.Services
 
             if (category.HasSubCategories)
             {
-                var subCategories = 
+                var subCategories =
                     await _CategoryTable
                         .Where(c => c.ParentCategoryId == category.Id)
                         .ToEnumerableAsync();
