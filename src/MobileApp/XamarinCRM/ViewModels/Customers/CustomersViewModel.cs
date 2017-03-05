@@ -57,7 +57,26 @@ namespace XamarinCRM.ViewModels.Customers
             IsBusy = true;
             LoadAccountsCommand.ChangeCanExecute(); 
 
-            Accounts = (await _DataService.GetAccountsAsync(false)).ToObservableCollection();
+            //Accounts = (await _DataService.GetAccountsAsync(false)).ToObservableCollection();
+
+
+			Accounts = new ObservableCollection<Account>();
+			Accounts.Add(new Account() {
+				LastName = "Automobile"
+			});
+			Accounts.Add(new Account()
+			{
+				LastName = "Medical"
+			});
+			Accounts.Add(new Account()
+			{
+				LastName = "IT"
+			});
+			Accounts.Add(new Account()
+			{
+				LastName = "Finance"
+			});
+
 
             IsBusy = false;
             LoadAccountsCommand.ChangeCanExecute(); 
