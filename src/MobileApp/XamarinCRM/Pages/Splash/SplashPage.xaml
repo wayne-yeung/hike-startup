@@ -22,14 +22,18 @@ xmlns:i18n="clr-namespace:XamarinCRM.Localization"
 				Spacing="0" 
 				AbsoluteLayout.LayoutBounds="0, 1, 1, AutoSize" 
 	         	AbsoluteLayout.LayoutFlags="YProportional,WidthProportional">
-	         	<Label 
-					x:Name="SplashTitle" 
-					Text="{i18n:Translate Splash_Title}" 
-					TextColor="{x:Static statics:Palette._018}" 
-					XAlign="Center" 
-					YAlign="Center" 
-					HeightRequest="44" 
-					FontSize="Large"/>
+
+        
+        
+        <Image
+          x:Name="SplashTitle"
+          Opacity ="0"
+          Source="hykeLogo"
+          HeightRequest="30"
+          Aspect="AspectFit"
+          AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+          AbsoluteLayout.LayoutFlags="XProportional,YProportional"/>
+        
 				<Label 
 					x:Name="UsernameTitleLabel" 
 					Text="{i18n:Translate Splash_UsernameTitleLabel}" 
