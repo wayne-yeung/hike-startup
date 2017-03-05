@@ -80,7 +80,24 @@ namespace XamarinCRM.ViewModels.Products
             IsBusy = true;
             LoadCategoriesCommand.ChangeCanExecute();
 
-            SubCategories = new ObservableCollection<Category>((await _DataService.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
+            //SubCategories = new ObservableCollection<Category>((await _DataService.GetCategoriesAsync((_Category != null) ? _Category.Id : null)));
+
+			SubCategories = new ObservableCollection<Category>();
+			SubCategories.Add(new Category() {
+				Name = "Ishares Nasdaq Biotechnology Etf"
+			});
+			SubCategories.Add(new Category()
+			{
+				Name = "Spdr S&p Biotech Etf"
+			});
+			SubCategories.Add(new Category()
+			{
+				Name = "BLDRS Asia Fund ETF "
+			});
+			SubCategories.Add(new Category()
+			{
+				Name = "Vanguard Information Technology Etf"
+			});
 
             IsBusy = false;
             LoadCategoriesCommand.ChangeCanExecute();
