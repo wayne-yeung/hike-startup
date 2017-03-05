@@ -28,6 +28,7 @@ using XamarinCRM.Services;
 using XamarinCRM.Statics;
 using XamarinCRM.ViewModels.Sales;
 using XamarinCRM.Views;
+using XamarinCRM.Localization;
 
 namespace XamarinCRM.Pages.Sales
 {
@@ -170,7 +171,7 @@ namespace XamarinCRM.Pages.Sales
             }
             else
             {
-                leadDetailPage.Title = "New Lead";
+                leadDetailPage.Title = "New Investment";
             }
 
             leadDetailPage.ToolbarItems.Add(

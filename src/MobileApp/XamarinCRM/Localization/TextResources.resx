@@ -15,13 +15,13 @@
 
 
 	<data name="MainTabs_Sales" xml:space="preserve">
-    	<value>Sales</value>
+    	<value>My Porfolio</value>
 	</data>
 	<data name="MainTabs_Customers" xml:space="preserve">
     	<value>Customers</value>
 	</data>
 	<data name="MainTabs_Products" xml:space="preserve">
-    	<value>Products</value>
+    	<value>ETFs</value>
 	</data>
 	<data name="MainTabs_About" xml:space="preserve">
     	<value>About</value>
@@ -41,7 +41,7 @@
     	<value>SKIP SIGN IN (demo)</value>
 	</data>
 	<data name="Splash_Title" xml:space="preserve">
-    	<value>Xamarin CRM</value>
+    	<value>Hike - Smart Invest</value>
 	</data>
 
 
@@ -103,7 +103,7 @@
 
 
 	<data name="Leads_LeadListHeaderTitle" xml:space="preserve">
-    	<value>Leads</value>
+    	<value>My Portfolio</value>
 	</data>
 	<data name="Leads_NewLead" xml:space="preserve">
     	<value>New Lead</value>
@@ -180,19 +180,19 @@
 
 
 	<data name="Sales" xml:space="preserve">
-    	<value>Sales</value>
+    	<value>My Profolio</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_Header_Title" xml:space="preserve">
-		<value>6-Week Sales</value>
+		<value>Performance brenchmark</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_Header_WeeklyAverageTitle" xml:space="preserve">
-		<value>Weekly Average</value>
+		<value>Investment size</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_LoadingLabel" xml:space="preserve">
-		<value>Loading sales data...</value>
+		<value>Loading performance brenchmark...</value>
 	</data>
 	<data name="SalesDashboard_Leads_LoadingLabel" xml:space="preserve">
-		<value>Loading leads data...</value>
+		<value>Loading portfolio data...</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_PrimaryAxis_Title" xml:space="preserve">
 		<value>Week</value>
@@ -209,7 +209,7 @@
 		<value>Orders</value>
 	</data>
 	<data name="Customers_Sales_Tab_Title" xml:space="preserve">
-		<value>Sales</value>
+		<value>My Porfolio</value>
 	</data>
 	<data name="Customers_Detail_Address" xml:space="preserve">
 		<value>Address</value>
@@ -320,7 +320,7 @@
 		<value>Deliver Order</value>
 	</data>
 	<data name="Customer_Sales_By_Category_Header" xml:space="preserve">
-		<value>6-Week Sales By Major Category</value>
+		<value>Performance Brenchmark</value>
 	</data>
 
 
