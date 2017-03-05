@@ -374,6 +374,13 @@ namespace XamarinCRM.Services
                 new List<Product>());
         }
 
+		private List<Product> GetProducts() {
+			return new List<Product>() { 
+				new Product() { Name = "iShares Automobile" } ,
+				new Product() { Name = "S&P500 ETF"}
+			};
+		}
+
         public async Task<IEnumerable<Product>> GetAllChildProductsAsync(string topLevelCategoryId)
         {
             return await Execute<IEnumerable<Product>>(
