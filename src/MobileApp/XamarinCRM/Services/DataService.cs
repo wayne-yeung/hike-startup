@@ -247,18 +247,24 @@ namespace XamarinCRM.Services
                         {
                             Company = "iShares Global Clean Energy UCITS ETF",
                             OpportunitySize = 3000,
+                            OpportunityStage = Account.OpportunityStages[0],
+                            Industry = Account.IndustryTypes[0],
                             IsLead = true
                         },
                         new Account()
                         {
                             Company = "iShares STOXX Europe 600 Banks UCITS ETF (DE)",
                             OpportunitySize = 3500,
+                            OpportunityStage = Account.OpportunityStages[1],
+                            Industry = Account.IndustryTypes[0],
                             IsLead = true
                         },
                         new Account()
                         {
                             Company = "iShares Dow Jones Global Sustainability Screened UCITS ETF",
                             OpportunitySize = 1600,
+                            OpportunityStage = Account.OpportunityStages[2],
+                            Industry = Account.IndustryTypes[0],
                             IsLead = true
                         }
                   },
