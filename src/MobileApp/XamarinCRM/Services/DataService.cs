@@ -241,13 +241,31 @@ namespace XamarinCRM.Services
         {
             return await Execute<IEnumerable<Account>>(
                 async () =>
-                    await _AccountTable
-                    .Where(account => account.IsLead == includeLeads).OrderBy(b => b.Company)
-                        .ToEnumerableAsync(),
+                    new List<Account>()
+                    {
+                        new Account()
+                        {
+                            Company = "iShares Global Clean Energy UCITS ETF",
+                            OpportunitySize = 3000,
+                            IsLead = true
+                        },
+                        new Account()
+                        {
+                            Company = "iShares STOXX Europe 600 Banks UCITS ETF (DE)",
+                            OpportunitySize = 3500,
+                            IsLead = true
+                        },
+                        new Account()
+                        {
+                            Company = "iShares Dow Jones Global Sustainability Screened UCITS ETF",
+                            OpportunitySize = 1600,
+                            IsLead = true
+                        }
+                  },
                 new List<Account>()
             );
-        }
 
+        }
         #endregion
 
 
