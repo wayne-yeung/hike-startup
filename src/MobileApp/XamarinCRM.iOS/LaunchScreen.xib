@@ -67,6 +67,6 @@
         <image name="customers.png" width="29" height="20"/>
         <image name="save.png" width="20" height="20"/>
         <image name="about_background.png" width="1827" height="731"/>
-		<image name="hykeLogo.png" width="150" height="101"/>
+		    <image name="hykeLogo.png" width="150" height="101"/>
     </resources>
 </document>
