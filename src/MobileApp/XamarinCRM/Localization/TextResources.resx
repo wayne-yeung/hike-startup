@@ -39,7 +39,7 @@
 	</data>
 	<data name="Splash_SkipSignIn" xml:space="preserve">
     	<value>SIGN IN</value>
-	</data>
+	</data> f
 	<data name="Splash_Title" xml:space="preserve">
     	<value>Hyke</value>
 	</data>
@@ -183,7 +183,7 @@
     	<value>My Profolio</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_Header_Title" xml:space="preserve">
-		<value>Performance brenchmark</value>
+		<value>Performance benchmark</value>
 	</data>
 	<data name="SalesDashboard_SalesChart_Header_WeeklyAverageTitle" xml:space="preserve">
 		<value>Investment size</value>

@@ -73,7 +73,7 @@ namespace XamarinCRM
 					LabelStyle = new DataMarkerLabelStyle()
 					{
 						LabelPosition = DataMarkerLabelPosition.Auto,
-						TextColor = Color.Black,
+						TextColor = Color.Transparent,
 						BackgroundColor = Color.Transparent, //Palette._003,
 						LabelFormat = "$0.00"
 					}
@@ -131,12 +131,12 @@ namespace XamarinCRM
 
                 PrimaryAxis = new CategoryAxis()
                 {
-                    Title = new ChartAxisTitle()
+                   /* Title = new ChartAxisTitle()
                     {
                         Text = TextResources.SalesDashboard_SalesChart_PrimaryAxis_Title,
                         Font = ChartAxisFont,
                         TextColor = Palette._011
-                    },
+                    },*/
                     LabelRotationAngle = -45,
                     EdgeLabelsDrawingMode = EdgeLabelsDrawingMode.Center,
                     LabelPlacement = LabelPlacement.BetweenTicks,
